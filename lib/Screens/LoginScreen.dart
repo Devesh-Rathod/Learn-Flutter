@@ -1,41 +1,59 @@
 import 'package:firebase_auth/firebase_auth.dart';
-
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:learn_flutter/Methods.dart';
 import 'package:lottie/lottie.dart';
-
 import 'HomeScreen.dart';
 import 'RegistrationScreen.dart';
+
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({ Key? key }) : super(key: key);
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  // Form Key
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController emailController = new TextEditingController();
-  final TextEditingController passwordController = new TextEditingController();
+
+  // Text Editing Controllers (Email and password)
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  bool isLoading = false;
+  // Firebase Authentication Instance
   final _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
+    // SignIn Function
+    //   void signIn(String email, String password) async {
+    //   if (_formKey.currentState!.validate()) {
+    //     await _auth.signInWithEmailAndPassword(email: email, password: password).then((value) => {
+    //               Fluttertoast.showToast(msg: "Login Successful"),
+    //               Navigator.of(context).pushReplacement(
+    //                   MaterialPageRoute(builder: (context) => HomeScreen())),
+    //             }).catchError((e) {
+    //       Fluttertoast.showToast(msg: e!.message);
+    //     });
+    //   }
+    // }
+    // Email Field
     final emailField = TextFormField(
       autofocus: false,
       controller: emailController,
       keyboardType: TextInputType.emailAddress,
-      validator: (value){
-        if(value!.isEmpty){
+      validator: (value) {
+        // If Empty
+        if (value!.isEmpty) {
           return ("Please enter valid email id");
         }
-        if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
-              .hasMatch(value)) {
-            return ("Please Enter a valid email");
-          }
-          return null;
-        
+        // Regexpression for valid email
+        if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]").hasMatch(value)) {
+          return ("Please Enter a valid email");
+        }
+        return null;
       },
-      onSaved: (value){
+      onSaved: (value) {
         emailController.text = value!;
       },
       textInputAction: TextInputAction.next,
@@ -43,121 +61,142 @@ class _LoginScreenState extends State<LoginScreen> {
         prefixIcon: Icon(Icons.email),
         contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: "Email",
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)) ,
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
       ),
     );
     final passwordField = TextFormField(
       autofocus: false,
       controller: passwordController,
       obscureText: true,
-      validator: (value){
-         RegExp regex = new RegExp(r'^.{6,}$');
-          if (value!.isEmpty) {
-            return ("Password is required for login");
-          }
-          if (!regex.hasMatch(value)) {
-            return ("Enter Valid Password");
-          }
-        
+      validator: (value) {
+        RegExp regex = new RegExp(r'^.{6,}$');
+        if (value!.isEmpty) {
+          return ("Password is required for login");
+        }
+        if (!regex.hasMatch(value)) {
+          return ("Enter Valid Password");
+        }
       },
-      onSaved: (value){
+      onSaved: (value) {
         passwordController.text = value!;
       },
-      textInputAction: TextInputAction.done,
-       decoration: InputDecoration(
+      textInputAction: TextInputAction.next,
+      decoration: InputDecoration(
         prefixIcon: Icon(Icons.security),
         contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
         hintText: "Password",
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)) ,
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
       ),
     );
     final loginButton = Material(
-      elevation: 5,
-      color: Colors.indigoAccent,
-      borderRadius: BorderRadius.circular(30),
-      
-      child: MaterialButton(
-        padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-        minWidth: MediaQuery.of(context).size.width,
-        onPressed: (){
-            signIn(emailController.text, passwordController.text);
-        }, 
-        child: Text('Login', style: TextStyle(
+        elevation: 5,
+        color: Colors.indigoAccent,
+        borderRadius: BorderRadius.circular(30),
+        child: MaterialButton(
+          padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+          minWidth: MediaQuery.of(context).size.width,
+          child: Text(
+            'Login',
+            style: TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.white,
-               ),
-            ), 
-      )
-    );
+            ),
+          ),
+          onPressed: () {
+            // signIn(emailController.text, passwordController.text);
+            if (emailController.text.isNotEmpty &&
+                emailController.text.isNotEmpty) {
+              setState(() {
+                isLoading = true;
+              });
+              logIn(emailController.text, passwordController.text).then((user) {
+                if (user != null) {
+                  print('Logged In');
+                  isLoading = false;
+                  Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => HomeScreen()));
+                } else {
+                 
+                  Future.delayed(Duration(seconds: 4), () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => RegisterationScreen()));
+                  });
+
+                  print('Login failed');
+                }
+              });
+            } else {
+              print('Please fill form correctly');
+            }
+          },
+        ));
     return Scaffold(
-      body: Container(
-          child: SingleChildScrollView(
-            child: Container(
-              child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Form(
-                  child: Column(  
-                    key: _formKey,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(height: 150,),
-                      SizedBox(
-                        height: 300,
-                        width: 300,
-                      
-                        child: Lottie.asset('Assets/Auth.json'),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      
-                      emailField,
-                      
-                      SizedBox(height: 20,),
-                      passwordField,
-                      SizedBox(height: 20,),
-                      loginButton,
-                      SizedBox(height: 10,),
-                      Row(
+      body: isLoading
+          ? Center(
+              child: Container(
+              height: 20,
+              width: 20,
+              child: CircularProgressIndicator(),
+            ))
+          : Container(
+              child: SingleChildScrollView(
+                child: Container(
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Form(
+                      child: Column(
+                        key: _formKey,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children:[
-                          Text("Don't have an account ? "),
-                          GestureDetector(
-                            onTap: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterationScreen()));
-                            },
-                            child: Text('SignUp',
-                            style: TextStyle(
-                              color: Colors.indigoAccent,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14
-                              )
-                            )
-                          )
-                        ]
-                      )
-                    ],
+                        children: [
+                          SizedBox(
+                            height: 150,
+                          ),
+                          SizedBox(
+                            height: 300,
+                            width: 300,
+                            child: Lottie.asset('Assets/Auth.json'),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          emailField,
+                          SizedBox(
+                            height: 20,
+                          ),
+                          passwordField,
+                          SizedBox(
+                            height: 20,
+                          ),
+                          loginButton,
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text("Don't have an account ? "),
+                                GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  RegisterationScreen()));
+                                    },
+                                    child: Text('SignUp',
+                                        style: TextStyle(
+                                            color: Colors.indigoAccent,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 14)))
+                              ])
+                        ],
+                      ),
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-      ),
     );
-  }
-  void signIn(String email, String password) async {
-    if (_formKey.currentState!.validate()) {
-      await _auth
-          .signInWithEmailAndPassword(email: email, password: password)
-          .then((uid) => {
-                Fluttertoast.showToast(msg: "Login Successful"),
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => HomeScreen())),
-              })
-          .catchError((e) {
-        Fluttertoast.showToast(msg: e!.message);
-      });
-    }
   }
 }
