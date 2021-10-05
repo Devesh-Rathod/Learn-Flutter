@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:learn_flutter/Methods.dart';
 import 'package:lottie/lottie.dart';
+
+import 'HomeScreen.dart';
 class RegisterationScreen extends StatefulWidget {
   const RegisterationScreen({ Key? key }) : super(key: key);
 
@@ -14,6 +17,7 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController = TextEditingController();
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     final firstName = TextFormField(
@@ -103,7 +107,33 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
         padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
         onPressed: (){
-            
+            if(firstNameController.text.isNotEmpty 
+            && lastNameController.text.isNotEmpty
+            && passwordController.text.isNotEmpty
+            && confirmPasswordController.text.isNotEmpty
+            ){
+                setState(() {
+                  isLoading = true;
+                });
+                signUp(firstNameController.text, lastNameController.text, emailController.text, passwordController.text, confirmPasswordController.text).then((user){
+                    if(user != null){
+                      setState(() {
+                        isLoading = false;
+                      });
+                      Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => HomeScreen()));
+                      print('SignUp Sucessfull');
+                    }else{
+                      Future.delayed(Duration(seconds: 5), () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => RegisterationScreen()));
+                  });
+                      print('SignUp Failed');
+                    }
+                });
+              }else{
+              print('Please enter fields ');
+            }
         }, 
         child: Text('SignUp', style: TextStyle(
               fontWeight: FontWeight.bold,
@@ -123,8 +153,15 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
             },
         )
       ),
-      body: Container(
-        child: SingleChildScrollView(
+      body: isLoading ? Center(
+        child: Container(
+          height: 20,
+          width: 20,
+          child: CircularProgressIndicator(),
+        ),
+      )
+      : Container(
+      child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.all(12),
             child: Form(
