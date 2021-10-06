@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:learn_flutter/Methods.dart';
 import 'package:lottie/lottie.dart';
 import 'HomeScreen.dart';
@@ -25,18 +24,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final _auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
-    // SignIn Function
-    //   void signIn(String email, String password) async {
-    //   if (_formKey.currentState!.validate()) {
-    //     await _auth.signInWithEmailAndPassword(email: email, password: password).then((value) => {
-    //               Fluttertoast.showToast(msg: "Login Successful"),
-    //               Navigator.of(context).pushReplacement(
-    //                   MaterialPageRoute(builder: (context) => HomeScreen())),
-    //             }).catchError((e) {
-    //       Fluttertoast.showToast(msg: e!.message);
-    //     });
-    //   }
-    // }
     // Email Field
     final emailField = TextFormField(
       autofocus: false,
@@ -102,8 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
               color: Colors.white,
             ),
           ),
-          onPressed: () {
-            // signIn(emailController.text, passwordController.text);
+          onPressed: ()  {
             if (emailController.text.isNotEmpty &&
                 emailController.text.isNotEmpty) {
               setState(() {
@@ -113,6 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 if (user != null) {
                   print('Logged In');
                   isLoading = false;
+                  
                   Navigator.of(context).pushReplacement(
                       MaterialPageRoute(builder: (context) => HomeScreen()));
                 } else {

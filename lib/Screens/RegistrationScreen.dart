@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learn_flutter/Methods.dart';
+import 'package:learn_flutter/Screens/LoginScreen.dart';
 import 'package:lottie/lottie.dart';
 
 import 'HomeScreen.dart';
@@ -124,9 +125,9 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
                     MaterialPageRoute(builder: (context) => HomeScreen()));
                       print('SignUp Sucessfull');
                     }else{
-                      Future.delayed(Duration(seconds: 5), () {
+                      Future.delayed(Duration(seconds: 4), () {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => RegisterationScreen()));
+                        builder: (context) => LoginScreen()));
                   });
                       print('SignUp Failed');
                     }
