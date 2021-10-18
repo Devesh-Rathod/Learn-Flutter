@@ -150,7 +150,8 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.indigoAccent,), 
           onPressed: () {
-            Navigator.of(context).pop();
+                          Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => LoginScreen()));
             },
         )
       ),
