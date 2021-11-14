@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:learn_flutter/Methods.dart';
 import 'package:lottie/lottie.dart';
@@ -21,7 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController passwordController = TextEditingController();
   bool isLoading = false;
   // Firebase Authentication Instance
-  final _auth = FirebaseAuth.instance;
+  
   @override
   Widget build(BuildContext context) {
     // Email Field

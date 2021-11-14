@@ -12,7 +12,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedItem = 0;
-  var _pages = [homePage(), Cart(), userAccount()];
+  var _pages = [homePage(), Quiz(), userAccount()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,9 +27,9 @@ class _HomeScreenState extends State<HomeScreen> {
             
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.monetization_on_rounded),
+            icon: Icon(Icons.quiz),
              backgroundColor: Colors.indigo,
-            label: 'Cart',
+            label: 'Quiz',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.supervised_user_circle),
