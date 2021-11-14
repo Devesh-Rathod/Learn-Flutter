@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:learn_flutter/Screens/HomeScreen.dart';
 import 'package:lottie/lottie.dart';
 
-import 'Intro.dart';
+
 
 class Dps extends StatelessWidget {
   const Dps({Key? key}) : super(key: key);

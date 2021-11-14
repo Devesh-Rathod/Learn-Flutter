@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
             
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.quiz_sharp),
+            icon: Icon(Icons.quiz),
              backgroundColor: Colors.indigo,
             label: 'Quiz',
           ),

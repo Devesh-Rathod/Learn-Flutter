@@ -6,6 +6,7 @@ import 'package:learn_flutter/Intoduction/6.dart';
 import 'package:learn_flutter/Intoduction/7.dart';
 import 'package:learn_flutter/Intoduction/Understand.dart';
 import 'package:learn_flutter/Intoduction/WFlutter.dart';
+import 'package:learn_flutter/Screens/Home.dart';
 
 import 'package:learn_flutter/Screens/HomeScreen.dart';
 
@@ -17,6 +18,7 @@ class Intro extends StatefulWidget {
 }
 
 class _IntroState extends State<Intro> {
+  final double _boderRadius = 24;
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -36,239 +38,275 @@ class _IntroState extends State<Intro> {
             ),
             onPressed: () {
               Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => HomeScreen()));
+                  .push(MaterialPageRoute(builder: (context) => homePage()));
             },
           ),
         ),
-        body: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        height: height * .05,
-                        width: width * .45,
-                        child: Center(
-                            child: Text(
-                          'What is Flutter ? ',
-                          style: TextStyle(
-                              // fontWeight: FontWeight.bold,
-                              fontSize: 24,
-                              color: Colors.blueGrey,
-                              decoration: TextDecoration.underline),
-                        )),
-                      ),
+        body: Padding(
+          padding: EdgeInsets.all(10),
+          child: SafeArea(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: height * 0.02,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (context) => Whflutter()));
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(9),
+                      height: height * .11,
+                      width: width * .9,
+                      child: Center(
+                          child: Text(
+                        'What Is Flutter ?',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      )),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(_boderRadius),
+                          gradient: LinearGradient(
+                            colors: [Colors.pink, Colors.red],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.red,
+                                blurRadius: 12,
+                                offset: Offset(0, 6))
+                          ]),
                     ),
-                    IconButton(
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => Whflutter()));
-                      },
-                      icon: Icon(
-                        Icons.arrow_forward_rounded,
-                        color: Colors.blue,
-                        size: 27,
-                      ),
+                  ),
+                  SizedBox(
+                    height: height * 0.02,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => UnderStand1()));
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(9),
+                      height: height * .11,
+                      width: width * .9,
+                      child: Center(
+                          child: Text(
+                        'Understanding The Flutter Architechure',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      )),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(_boderRadius),
+                          gradient: LinearGradient(
+                            colors: [Colors.pink, Colors.red],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.red,
+                                blurRadius: 12,
+                                offset: Offset(0, 6))
+                          ]),
                     ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        height: height * .10,
-                        width: width * .70,
-                        child: Center(
-                            child: Text(
-                          'Understanding The Flutter Architechure ',
-                          style: TextStyle(
-                              // fontWeight: FontWeight.bold,
-                              fontSize: 24,
-                              color: Colors.blueGrey,
-                              decoration: TextDecoration.underline),
-                        )),
-                      ),
+                  ),
+                  SizedBox(
+                    height: height * 0.02,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => How()));
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(9),
+                      height: height * .11,
+                      width: width * .9,
+                      child: Center(
+                          child: Text(
+                        'How Flutter And Dart Code Compiled',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      )),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(_boderRadius),
+                          gradient: LinearGradient(
+                            colors: [Colors.pink, Colors.red],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.red,
+                                blurRadius: 12,
+                                offset: Offset(0, 6))
+                          ]),
                     ),
-                    IconButton(
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => UnderStand1()));
-                      },
-                      icon: Icon(
-                        Icons.arrow_forward_rounded,
-                        color: Colors.blue,
-                        size: 27,
-                      ),
+                  ),
+                  SizedBox(
+                    height: height * 0.02,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => Version()));
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(9),
+                      height: height * .11,
+                      width: width * .9,
+                      child: Center(
+                          child: Text(
+                        'Understanding The Flutter Versions',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      )),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(_boderRadius),
+                          gradient: LinearGradient(
+                            colors: [Colors.pink, Colors.red],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.red,
+                                blurRadius: 12,
+                                offset: Offset(0, 6))
+                          ]),
                     ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        height: height * .10,
-                        width: width * .70,
-                        child: Center(
-                            child: Text(
-                          'How Flutter And Dart Code Compiled',
-                          style: TextStyle(
-                              // fontWeight: FontWeight.bold,
-                              fontSize: 24,
-                              color: Colors.blueGrey,
-                              decoration: TextDecoration.underline),
-                        )),
-                      ),
+                  ),
+                  SizedBox(
+                    height: height * 0.02,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => MacSetup()));
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(9),
+                      height: height * .11,
+                      width: width * .9,
+                      child: Center(
+                          child: Text(
+                        'Flutter MacOS Setup',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      )),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(_boderRadius),
+                          gradient: LinearGradient(
+                            colors: [Colors.pink, Colors.red],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.red,
+                                blurRadius: 12,
+                                offset: Offset(0, 6))
+                          ]),
                     ),
-                    IconButton(
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => How()));
-                      },
-                      icon: Icon(
-                        Icons.arrow_forward_rounded,
-                        color: Colors.blue,
-                        size: 27,
-                      ),
+                  ),
+                  SizedBox(
+                    height: height * 0.02,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => WindowSetUp()));
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(9),
+                      height: height * .11,
+                      width: width * .9,
+                      child: Center(
+                          child: Text(
+                        'Flutter Windows Setup',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      )),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(_boderRadius),
+                          gradient: LinearGradient(
+                            colors: [Colors.pink, Colors.red],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.red,
+                                blurRadius: 12,
+                                offset: Offset(0, 6))
+                          ]),
                     ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        height: height * .10,
-                        width: width * .60,
-                        child: Center(
-                            child: Text(
-                          'Understanding Flutter Versions',
-                          style: TextStyle(
-                              // fontWeight: FontWeight.bold,
-                              fontSize: 24,
-                              color: Colors.blueGrey,
-                              decoration: TextDecoration.underline),
-                        )),
-                      ),
+                  ),
+                  SizedBox(
+                    height: height * 0.02,
+                  ),
+                   GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => Course()));
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(9),
+                      height: height * .11,
+                      width: width * .9,
+                      child: Center(
+                          child: Text(
+                        'Course Outline',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      )),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(_boderRadius),
+                          gradient: LinearGradient(
+                            colors: [Colors.pink, Colors.red],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.red,
+                                blurRadius: 12,
+                                offset: Offset(0, 6))
+                          ]),
                     ),
-                    IconButton(
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => Version()));
-                      },
-                      icon: Icon(
-                        Icons.arrow_forward_rounded,
-                        color: Colors.blue,
-                        size: 27,
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        height: height * .05,
-                        width: width * .57,
-                        child: Center(
-                            child: Text(
-                          'Flutter MacOS Setup',
-                          style: TextStyle(
-                              // fontWeight: FontWeight.bold,
-                              fontSize: 24,
-                              color: Colors.blueGrey,
-                              decoration: TextDecoration.underline),
-                        )),
-                      ),
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => MacSetup()));
-                      },
-                      icon: Icon(
-                        Icons.arrow_forward_rounded,
-                        color: Colors.blue,
-                        size: 27,
-                      ),
-                    ),
-                  ],
-                ),
-                
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        height: height * .10,
-                        width: width * .50,
-                        child: Center(
-                            child: Text(
-                          'Flutter Windows Setup',
-                          style: TextStyle(
-                              // fontWeight: FontWeight.bold,
-                              fontSize: 24,
-                              color: Colors.blueGrey,
-                              decoration: TextDecoration.underline),
-                        )),
-                      ),
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => WindowSetUp()));
-                      },
-                      icon: Icon(
-                        Icons.arrow_forward_rounded,
-                        color: Colors.blue,
-                        size: 27,
-                      ),
-                    ),
-                  ],
-                ),
-                
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        height: height * .10,
-                        width: width * .40,
-                        child: Center(
-                            child: Text(
-                          'Course Outline',
-                          style: TextStyle(
-                              // fontWeight: FontWeight.bold,
-                              fontSize: 24,
-                              color: Colors.blueGrey,
-                              decoration: TextDecoration.underline),
-                        )),
-                      ),
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => Course()));
-                      },
-                      icon: Icon(
-                        Icons.arrow_forward_rounded,
-                        color: Colors.blue,
-                        size: 27,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+                  ),
+                  SizedBox(
+                    height: height * 0.02,
+                  ),
+                ],
+              ),
             ),
           ),
         ));
