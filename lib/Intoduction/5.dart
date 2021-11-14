@@ -8,7 +8,7 @@ class MacSetup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String PATH = "PATH";
+    final String pATH = "PATH";
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -120,7 +120,7 @@ class MacSetup extends StatelessWidget {
               ListTile(
                 leading: MyBullet(),
                 title: Text(
-                  'export PATH="$PATH:`pwd`/flutter/bin"',
+                  'export PATH="$pATH:`pwd`/flutter/bin"',
                   style: TextStyle(fontSize: 17),
                 ),
               ),

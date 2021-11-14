@@ -98,7 +98,18 @@ class Dps extends StatelessWidget {
               ListTile(
                 leading: MyBullet(),
                 title: Text('The variable name should be retable to the program and readable.', style: TextStyle(fontSize: 17),),
-              ),   
+              ), 
+               SizedBox(
+                height: height * 0.05,
+              ),
+              Center(
+                child: Image.asset(
+                  'Assets/download.png',
+                ),
+              ),
+              SizedBox(
+                height: height * 0.05,
+              ),
             ],
           ),
         ),

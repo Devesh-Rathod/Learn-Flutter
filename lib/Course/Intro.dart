@@ -6,7 +6,6 @@ import 'package:learn_flutter/Intoduction/6.dart';
 import 'package:learn_flutter/Intoduction/7.dart';
 import 'package:learn_flutter/Intoduction/Understand.dart';
 import 'package:learn_flutter/Intoduction/WFlutter.dart';
-import 'package:learn_flutter/Screens/Home.dart';
 
 import 'package:learn_flutter/Screens/HomeScreen.dart';
 
@@ -38,7 +37,7 @@ class _IntroState extends State<Intro> {
             ),
             onPressed: () {
               Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => homePage()));
+                  .push(MaterialPageRoute(builder: (context) => HomeScreen()));
             },
           ),
         ),

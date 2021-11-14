@@ -1,8 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:learn_flutter/Course/Intro.dart';
-import 'package:learn_flutter/Screens/Home.dart';
+
 import 'package:learn_flutter/Screens/SplashScreen.dart';
 
 Future<void> main() async {

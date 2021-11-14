@@ -12,7 +12,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedItem = 0;
-  var _pages = [homePage(), Quiz(), userAccount()];
+  var _pages = [homePage(), Quiz(), UserAcc()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
