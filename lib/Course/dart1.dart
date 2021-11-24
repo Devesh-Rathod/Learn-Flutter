@@ -14,13 +14,13 @@ class Dps extends StatelessWidget {
     
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dart Programming Syntax'),
+        title: Text('Dart Programming Syntax', style: TextStyle(color: Colors.blueAccent, fontWeight: FontWeight.bold),),
         backgroundColor: Colors.white,
         elevation: 0.0,
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
-            color: Colors.indigoAccent,
+            color: Colors.blueAccent,
           ),
           onPressed: () {
             Navigator.of(context)

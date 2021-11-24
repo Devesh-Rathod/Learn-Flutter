@@ -19,6 +19,7 @@ class How extends StatelessWidget {
             Icons.arrow_back,
             color: Colors.blue,
           ),
+          
           onPressed: () {
             Navigator.of(context)
                 .push(MaterialPageRoute(builder: (context) => Intro()));

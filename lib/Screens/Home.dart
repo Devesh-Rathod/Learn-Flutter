@@ -2,6 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:learn_flutter/Course/Funda.dart';
+import 'package:learn_flutter/Course/State.dart';
+
 import 'package:learn_flutter/Course/dart1.dart';
 import 'package:learn_flutter/Course/Intro.dart';
 
@@ -172,61 +175,73 @@ class _homePageState extends State<homePage> {
               SizedBox(
                 height: height * 0.02,
               ),
-              Container(
-                padding: EdgeInsets.all(9),
-                height: height * .10,
-                width: width * .9,
-                child: Center(
-                    child: Text(
-                  'State Management in Flutter',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
-                )),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(_boderRadius),
-                    gradient: LinearGradient(
-                      colors: [Colors.pink, Colors.red],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.red,
-                          blurRadius: 12,
-                          offset: Offset(0, 6))
-                    ]),
+              GestureDetector(
+                onTap: (){
+                  Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => StateF()));
+                },
+                child: Container(
+                  padding: EdgeInsets.all(9),
+                  height: height * .10,
+                  width: width * .9,
+                  child: Center(
+                      child: Text(
+                    'State Management in Flutter',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  )),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(_boderRadius),
+                      gradient: LinearGradient(
+                        colors: [Colors.pink, Colors.red],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.red,
+                            blurRadius: 12,
+                            offset: Offset(0, 6))
+                      ]),
+                ),
               ),
               SizedBox(
                 height: height * 0.02,
               ),
-              Container(
-                height: height * .10,
-                width: width * .9,
-                child: Center(
-                    child: Text(
-                  'Flutter Widgets Fundamentals',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
-                )),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(_boderRadius),
-                    gradient: LinearGradient(
-                      colors: [Colors.pink, Colors.red],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.red,
-                          blurRadius: 12,
-                          offset: Offset(0, 6))
-                    ]),
+              GestureDetector(
+                onTap: (){
+                  Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => Funda()));
+                },
+                child: Container(
+                  height: height * .10,
+                  width: width * .9,
+                  child: Center(
+                      child: Text(
+                    'Flutter Widgets Fundamentals',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  )),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(_boderRadius),
+                      gradient: LinearGradient(
+                        colors: [Colors.pink, Colors.red],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.red,
+                            blurRadius: 12,
+                            offset: Offset(0, 6))
+                      ]),
+                ),
               ),
               SizedBox(
                 height: height * 0.02,
