@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learn_flutter/Course/Intro.dart';
+import 'package:learn_flutter/Intoduction/6.dart';
 import 'package:lottie/lottie.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -130,6 +131,16 @@ class MacSetup extends StatelessWidget {
             ],
           ),
         ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: FloatingActionButton(
+        // isExtended: true,
+        child: Icon(Icons.arrow_forward_outlined),
+        backgroundColor: Colors.blue,
+        onPressed: () {
+          Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => WindowSetUp()));
+        },
       ),
     );
   }

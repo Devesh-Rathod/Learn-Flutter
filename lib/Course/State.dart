@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learn_flutter/Course/Funda.dart';
 import 'package:learn_flutter/Screens/HomeScreen.dart';
 import 'package:lottie/lottie.dart';
 
@@ -114,7 +115,7 @@ class StateF extends StatelessWidget {
                     ),
                   ),
                 ),
-                 ListTile(
+                ListTile(
                   leading: MyBullet(),
                   title: Text(
                     'Navigation.push',
@@ -165,7 +166,18 @@ class StateF extends StatelessWidget {
               ],
             ),
           ),
-        ));
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: FloatingActionButton(
+        // isExtended: true,
+        child: Icon(Icons.arrow_forward_outlined),
+        backgroundColor: Colors.blue,
+        onPressed: () {
+          Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => Funda()));
+        },
+      ),
+        );
   }
 }
 
