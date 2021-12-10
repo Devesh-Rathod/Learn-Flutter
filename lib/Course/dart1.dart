@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learn_flutter/Course/State.dart';
 import 'package:learn_flutter/Screens/HomeScreen.dart';
 import 'package:lottie/lottie.dart';
 
@@ -14,13 +15,13 @@ class Dps extends StatelessWidget {
     
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dart Programming Syntax'),
+        title: Text('Dart Programming Syntax', style: TextStyle(color: Colors.blueAccent, fontWeight: FontWeight.bold),),
         backgroundColor: Colors.white,
         elevation: 0.0,
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
-            color: Colors.indigoAccent,
+            color: Colors.blueAccent,
           ),
           onPressed: () {
             Navigator.of(context)
@@ -98,10 +99,31 @@ class Dps extends StatelessWidget {
               ListTile(
                 leading: MyBullet(),
                 title: Text('The variable name should be retable to the program and readable.', style: TextStyle(fontSize: 17),),
-              ),   
+              ), 
+               SizedBox(
+                height: height * 0.05,
+              ),
+              Center(
+                child: Image.asset(
+                  'Assets/download.png',
+                ),
+              ),
+              SizedBox(
+                height: height * 0.05,
+              ),
             ],
           ),
         ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: FloatingActionButton(
+        // isExtended: true,
+        child: Icon(Icons.arrow_forward_outlined),
+        backgroundColor: Colors.blue,
+        onPressed: () {
+          Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => StateF()));
+        },
       ),
     );
   }

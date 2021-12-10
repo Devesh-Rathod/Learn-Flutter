@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learn_flutter/Course/Intro.dart';
+import 'package:learn_flutter/Intoduction/3.dart';
 import 'package:lottie/lottie.dart';
 
 class UnderStand1 extends StatelessWidget {
@@ -180,6 +181,16 @@ class UnderStand1 extends StatelessWidget {
             ],
           ),
         ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: FloatingActionButton(
+        // isExtended: true,
+        child: Icon(Icons.arrow_forward_outlined),
+        backgroundColor: Colors.blue,
+        onPressed: () {
+          Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => How()));
+        },
       ),
     );
   }

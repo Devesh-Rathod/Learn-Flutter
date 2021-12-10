@@ -3,7 +3,7 @@ import 'package:learn_flutter/Methods.dart';
 import 'package:lottie/lottie.dart';
 import 'HomeScreen.dart';
 import 'RegistrationScreen.dart';
-
+String email = "guest@gmail.com";
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -92,6 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
             if (emailController.text.isNotEmpty &&
                 emailController.text.isNotEmpty) {
               setState(() {
+                email = emailController.text.toString();
                 isLoading = true;
               });
               logIn(emailController.text, passwordController.text).then((user) {

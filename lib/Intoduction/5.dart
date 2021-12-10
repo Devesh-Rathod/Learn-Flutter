@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learn_flutter/Course/Intro.dart';
+import 'package:learn_flutter/Intoduction/6.dart';
 import 'package:lottie/lottie.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -8,7 +9,7 @@ class MacSetup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String PATH = "PATH";
+    final String pATH = "PATH";
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -120,7 +121,7 @@ class MacSetup extends StatelessWidget {
               ListTile(
                 leading: MyBullet(),
                 title: Text(
-                  'export PATH="$PATH:`pwd`/flutter/bin"',
+                  'export PATH="$pATH:`pwd`/flutter/bin"',
                   style: TextStyle(fontSize: 17),
                 ),
               ),
@@ -130,6 +131,16 @@ class MacSetup extends StatelessWidget {
             ],
           ),
         ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: FloatingActionButton(
+        // isExtended: true,
+        child: Icon(Icons.arrow_forward_outlined),
+        backgroundColor: Colors.blue,
+        onPressed: () {
+          Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => WindowSetUp()));
+        },
       ),
     );
   }

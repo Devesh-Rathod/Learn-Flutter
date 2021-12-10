@@ -4,6 +4,8 @@ import 'package:learn_flutter/Screens/LoginScreen.dart';
 import 'package:lottie/lottie.dart';
 
 import 'HomeScreen.dart';
+String name = "Guest";
+String last = "1";
 class RegisterationScreen extends StatefulWidget {
   const RegisterationScreen({ Key? key }) : super(key: key);
 
@@ -28,6 +30,7 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
       
       onSaved: (value){
         firstNameController.text = value!;
+        
       },
       
       textInputAction: TextInputAction.next,
@@ -115,6 +118,9 @@ class _RegisterationScreenState extends State<RegisterationScreen> {
             ){
                 setState(() {
                   isLoading = true;
+                  name = firstNameController.text.toString();
+                  last = lastNameController.text.toString();
+                  email = emailController.text.toString();
                 });
                 signUp(firstNameController.text, lastNameController.text, emailController.text, passwordController.text, confirmPasswordController.text).then((user){
                     if(user != null){
